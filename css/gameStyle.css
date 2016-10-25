@@ -1,0 +1,30 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.gridSection {
+    margin: 20px auto;
+    width: 1656px; /* 23 grid units horizontally */
+    height: 882px; /* 21 grid units vertically */
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+    background-color: #00b3ee;
+    overflow: hidden;
+}
+
+.tile {
+    transform: skew(0deg, -30deg) scale(1, 1.16);
+    height: 36px; /* once skewed and scaled, height is actually 42px*/
+    width: 36px; /* once skewed and scaled, width is actually 72px*/
+    background-color: #9d9d9d;
+    /*border: 1px solid black;*/
+}
+
+.basicGridSection {
+    transform: rotate(60deg);
+    position: absolute;
+    display: inline-block;
+}
