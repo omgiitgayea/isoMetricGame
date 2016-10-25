@@ -16,6 +16,7 @@ var TILE_TOP_OFFSET_OFFEDGE = -18;
 
 var boardWidth = $(".gridSection").css("width");
 var boardHeight = $(".gridSection").css("height");
+var currentPiece;
 
 boardWidth = Number(boardWidth.slice(0, boardWidth.length - 2));
 boardHeight = Number(boardHeight.slice(0, boardHeight.length - 2));
@@ -52,30 +53,26 @@ function initializeBoard(width, height) {
             basicTile.css("background-color", "#9d9d9d");
             basicTile.attr("passable", "true");
         }
-        console.log(basicTile.attr("passable"));
         for (var i = 0; i <= horizTiles; i++) {
             aSpace.css("left", TILE_LEFT_OFFSET_OFFEDGE + TILE_VERT_OFFSET * i + "px");
             aSpace.clone().prependTo($(".gridSection"));
-            console.log(basicTile.attr("passable"));
         }
     }
 }
 
 $(".tile").contextmenu(function (event) {
     event.preventDefault();
-    console.log($(this).parent().css("top") + " " + $(this).parent().css("left"));
-    console.log(Boolean($(this).attr("passable")));
-    if (Boolean($(this).attr("passable")))
+    if(currentPiece)
     {
-        var bgColor = $(this).css("background-color");
-        bgColor = rgb2hex(bgColor);
-        if (bgColor === "#9d9d9d") {
-            $(this).css("background-color", "green");
-        }
-        else {
-            $(this).css("background-color", "#9d9d9d");
-        }
+        console.log(pxToNum($(this).parent().css("top")));
+        currentPiece.css("top", pxToNum($(this).parent().css("top")) + 7 + "px");
+        currentPiece.css("left", pxToNum($(this).parent().css("left")) + 8 + "px");
     }
+});
+
+$(".gamePiece").click(function () {
+    currentPiece = $(this);
+    console.log(currentPiece);
 });
 
 function rgb2hex(rgb) {
@@ -89,3 +86,8 @@ function dec2HexString(decString) {
     }
     return hexString;
 }
+ function pxToNum(pixels)
+ {
+     number = Number(pixels.slice(0, pixels.length - 2));
+     return number;
+ }

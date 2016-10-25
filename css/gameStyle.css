@@ -4,6 +4,14 @@ body, html {
     height: 100%;
 }
 
+.gamePiece
+{
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 62px;
+}
+
 .gridSection {
     margin: 20px auto;
     width: 1656px; /* 23 grid units horizontally */
